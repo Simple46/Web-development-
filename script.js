@@ -103,7 +103,63 @@ const account5 = {
   locale: 'en-NG',
 };
 
-const accounts = [account1, account2, account3, account4, account5];
+const account6 = {
+  owner: "Mujeeb Sub-sobur",
+  movements: [16000, 8000, -6500, -7000, -310, -5000, 10500, -3000],
+  pin: 6666,
+
+  movementsDates: [
+    "2025-02-10T13:15:33.035Z",
+    "2025-02-18T09:48:16.867Z",
+    "2025-02-25T06:04:23.907Z",
+    "2025-03-15T14:18:46.235Z",
+    "2025-04-21T16:33:06.386Z",
+    "2025-04-26T14:43:26.374Z",
+    "2025-04-30T18:49:59.371Z",
+    "2025-05-31T12:01:20.894Z",
+  ],
+  currency: "NGN",
+  locale: "en-NG",
+};
+
+const account7 = {
+  owner: "Mustakeem Adigun",
+  movements: [20000, 8000, -15000, -5000, -3010, -5000, 14500, -8000],
+  pin: 7777,
+
+  movementsDates: [
+    "2025-03-10T13:15:33.035Z",
+    "2025-03-18T09:48:16.867Z",
+    "2025-03-25T06:04:23.907Z",
+    "2025-04-15T14:18:46.235Z",
+    "2025-05-21T16:33:06.386Z",
+    "2025-05-26T14:43:26.374Z",
+    "2025-05-30T18:49:59.371Z",
+    "2025-06-31T12:01:20.894Z",
+  ],
+  currency: "NGN",
+  locale: "en-NG",
+};
+
+const account8 = {
+  owner: "Abdulsalam Apalando",
+  movements: [20000, 10000, -17000, -8080, -3010, -5000, 13500, -8900],
+  pin: 7777,
+
+  movementsDates: [
+    "2025-03-10T13:15:33.035Z",
+    "2025-03-18T09:48:16.867Z",
+    "2025-04-25T06:04:23.907Z",
+    "2025-04-15T14:18:46.235Z",
+    "2025-05-21T16:33:06.386Z",
+    "2025-05-26T14:43:26.374Z",
+    "2025-05-30T18:49:59.371Z",
+    "2025-06-31T12:01:20.894Z",
+  ],
+  currency: "NGN",
+  locale: "en-NG",
+};
+const accounts = [account1, account2, account3, account4, account5, account6, account7];
 
 /////////////////////////////////////////////////
 // Elements
@@ -249,7 +305,7 @@ const startLogOutTimer = function(){
 
      // logout when time reaches 0
 
-     if(time ===0){
+     if(time ===0 ){
       clearInterval(timer)
       labelWelcome.textContent = `Log in to get started`;
       containerApp.style.opacity = 0;
@@ -260,13 +316,12 @@ const startLogOutTimer = function(){
 
    }
   // set the time interval 
-  tick()
    const timer = setInterval(tick, 1000)
 
 }
 
 const showModal = function () {
-  modal.style.top = '20%'
+  modal.style.top = '10%'
   overlay.style.display = 'flex'
 }
 
