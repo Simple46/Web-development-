@@ -326,7 +326,7 @@ const showModal = function () {
 }
 
 const closeModal = function () {
-  modal.style.top = '-100%';
+  modal.style.top = '-130%';
   overlay.style.display = 'none'
 }
 ///////////////////////////////////////
