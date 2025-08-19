@@ -124,7 +124,7 @@ const account6 = {
 
 const account7 = {
   owner: "Mustakeem Adigun",
-  movements: [20000, 8000, -15000, -5000, -3010, -5000, 14500, -8000],
+  movements: [20000, 8000, -15000, -1000, -3010, -5000, 20500, -8000],
   pin: 7777,
 
   movementsDates: [
@@ -143,8 +143,8 @@ const account7 = {
 
 const account8 = {
   owner: "Abdulsalam Apalando",
-  movements: [20000, 10000, -17000, -8080, -3010, -5000, 13500, -8900],
-  pin: 7777,
+  movements: [20000, 10000, -17000, -8080, -3010, -5000, 19500, -8900],
+  pin: 8888,
 
   movementsDates: [
     "2025-03-10T13:15:33.035Z",
@@ -159,7 +159,7 @@ const account8 = {
   currency: "NGN",
   locale: "en-NG",
 };
-const accounts = [account1, account2, account3, account4, account5, account6, account7];
+const accounts = [account1, account2, account3, account4, account5, account6, account7, account8];
 
 /////////////////////////////////////////////////
 // Elements
@@ -412,30 +412,8 @@ btnTransfer.addEventListener('click', function (e) {
   );
   inputTransferAmount.value = inputTransferTo.value = '';
 
-  if(currentAccount.currency === 'USD' && receiverAcc.currency === 'NGN'){
-    currentAccount.movements.push(-amount);
-    receiverAcc.movements.push(amount * 1500);
-    
-    currentAccount.movementsDates.push(new Date().toISOString())
-    receiverAcc.movementsDates.push(new Date().toISOString())
-
-    // Update UI
-    updateUI(currentAccount);
-  }
-
-  else if(currentAccount.currency === 'NGN' && receiverAcc.currency === 'USD'){
-    currentAccount.movements.push(-amount);
-    receiverAcc.movements.push(amount/1500);
-    
-    currentAccount.movementsDates.push(new Date().toISOString())
-    receiverAcc.movementsDates.push(new Date().toISOString())
-
-    // Update UI
-    updateUI(currentAccount);
-
-  }
   
-  else if (
+  if (
     amount > 0 &&
     receiverAcc &&
     currentAccount.balance >= amount &&
@@ -451,6 +429,31 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+      if (currentAccount.currency === "USD" && receiverAcc.currency === "NGN") {
+        currentAccount.movements.push(-amount);
+        receiverAcc.movements.push(amount * 1500);
+
+        currentAccount.movementsDates.push(new Date().toISOString());
+        receiverAcc.movementsDates.push(new Date().toISOString());
+
+        // Update UI
+        updateUI(currentAccount);
+      } else if (
+        currentAccount.currency === "NGN" &&
+        receiverAcc.currency === "USD"
+      ) {
+        currentAccount.movements.push(-amount);
+        receiverAcc.movements.push(amount / 1500);
+
+        currentAccount.movementsDates.push(new Date().toISOString());
+        receiverAcc.movementsDates.push(new Date().toISOString());
+
+        // Update UI
+        updateUI(currentAccount);
+      }
+  }
+  else {
+    alert('insufficient balance 😢')
   }
   
 
@@ -473,7 +476,10 @@ btnLoan.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
   }, 3000)
-}
+  }
+  else {
+    alert('You are not eligible for this amount of loan🤦‍♂️')
+  }
   inputLoanAmount.value = '';
 });
 
